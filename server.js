@@ -1,17 +1,18 @@
 const express = require('express')
 const mysql = require('mysql')
 const myconn = require('express-myconnection')
+const connectionDB = require('./config/config').config().CONNECTION_DB;
 
 const routes = require('./routes')
 
 const app = express()
 app.set('port', process.env.PORT || 9000)
 const dbOptions = {
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: 'abc123',
-    database: 'library'
+    host: connectionDB.host,
+    port: connectionDB.port,
+    user: connectionDB.user,
+    password: connectionDB.password,
+    database: connectionDB.database
 }
 
 // middlewares -------------------------------------
